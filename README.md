@@ -10,4 +10,4 @@ This is a collective of personal Python projects I've been working on
 
     - World Data Explorer: March 19, 2026: Search any country or stock ticker and get real live data from public APIs
 
-    - Spotify Data Analyzer: uses real Spotify streaming data with Pandas and Matplotlib to plot the top 10 most streamed songs and artists, and visualizes the relationship between a song's energy and its popularity through interactive charts
+    - Spotify Data Analyzer: March 28, 2026: uses real Spotify streaming data with Pandas and Matplotlib to plot the top 10 most streamed songs and artists, and visualizes the relationship between a song's energy and its popularity through interactive charts
