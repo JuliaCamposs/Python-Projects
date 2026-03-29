@@ -88,8 +88,8 @@ def plot_top_songs(df):
     # display the graph
     plt.show()
 
-df = load_data("spotify-2023.csv")
-plot_top_songs(df)
+#df = load_data("spotify-2023.csv")
+#plot_top_songs(df)
 
 # step 5 - graphing 
 
@@ -110,9 +110,74 @@ def plot_top_artists(df):
 
     plt.show()
 
-df = load_data("spotify-2023.csv")
-plot_top_artists(df)
+#df = load_data("spotify-2023.csv")
+#plot_top_artists(df)
 
 
+# step 6 - graphing
+
+def plot_energy_vs_popularity(df):   
+    # create the figure with a good size
+    plt.figure(figsize=(12, 6))
+
+    # create scatter plot (each dot is a song)
+    # alpha=0.5 makes dots transparent so overlapping ones are visible
+    plt.scatter(df['energy_%'], df['streams'], alpha=0.5, color='#1DB954')
+
+    plt.title("Does Energy Affect Popularity?")
+    plt.xlabel("Energy %")
+    plt.ylabel("Streams")
+
+    plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x/1_000_000_000:.1f}B'))
+
+    plt.tight_layout()
+
+    plt.show()
 
    
+#df = load_data("spotify-2023.csv")
+#plot_energy_vs_popularity(df)
+
+
+# step 7 - main function
+
+def main():
+    # load the dataset once at the start
+    df = load_data("spotify-2023.csv")
+    print("Dataset was successfully loaded!")
+
+    while True:
+        print("\n This is Spotify Data Analyzer (from 2023 data)")
+        print("1. Show top 10 songs")
+        print("2. Show top 10 artists")
+        print("3. Energy vs Popularity chart")
+        print("4. Quit")
+
+        choice = input("Pick an option: ").strip()
+
+        if choice == '4':
+            print("Goodbye")
+            break
+
+        elif choice == '1':
+            # get and display top songs in terminal
+            print("\nTop 10 Most Streamed Songs:")
+            print(top_songs(df)[['track_name', 'artist(s)_name', 'streams']])
+            # show the graph
+            plot_top_songs(df)
+
+        elif choice == '2':
+            # get and display top artists in terminal
+            print("\nTop 10 Most Popular Artists:")
+            print(top_artists(df))
+            # show the graph
+            plot_top_artists(df)
+
+        elif choice == '3':
+            # show the scatter plot
+            plot_energy_vs_popularity(df)
+
+        else:
+            print("Invalid option, please pick 1-4")
+
+main()
